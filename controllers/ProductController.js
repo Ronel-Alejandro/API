@@ -7,7 +7,7 @@ const Subcategory = require("../models/Subcategory");
 const img = require('../config/config')
 
 const index = (req, res, next) => {
-  const limit = parseInt(req.query.limit, 10) || 4;
+  const limit = parseInt(req.query.limit, 10) || 9;
   const page = parseInt(req.query.page, 10) || 1;
   Product.paginate({}, { limit, page, sort: { createdAt: -1 } })
   .then((response) => {
@@ -123,7 +123,7 @@ const store = (req, res, next) => {
           // product.image = url + '/uploads/' + req.file.filename
 
           //movil
-          const IMG_BASE = process.env.IMG_BASE || "https://apifoodmet.up.railway.app";
+          const IMG_BASE = process.env.IMG_BASE || "https://apifood-met.up.railway.app";
           const IMG_UPLOADS = process.env.IMG_UPLOADS || "/uploads/";
           const IMG_URL = IMG_BASE + IMG_UPLOADS + req.file.filename;
           const url = img

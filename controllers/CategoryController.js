@@ -37,7 +37,7 @@ const store = (req, res, next) => {
         if (req.file) {
           // const url = req.protocol + '://' + req.get('host')
           // category.image = url + '/uploads/' + req.file.filename
-          const IMG_BASE = process.env.IMG_BASE || "https://apifoodmet.up.railway.app";
+          const IMG_BASE = process.env.IMG_BASE || "https://apifood-met.up.railway.app";
           const IMG_UPLOADS = process.env.IMG_UPLOADS || "/uploads/";
           const IMG_URL = IMG_BASE + IMG_UPLOADS + req.file.filename;
           const url = img
