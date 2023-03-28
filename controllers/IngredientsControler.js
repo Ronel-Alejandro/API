@@ -2,7 +2,7 @@ const { response } = require("express");
 const Ingredients = require('../models/Ingredients');
 
 const index = (req, res) => {
-    const limit = parseInt(req.query.limit, 10) || 5;
+    const limit = parseInt(req.query.limit, 10) || 200;
     const page = parseInt(req.query.page, 10) || 1;
 
     Ingredients.paginate({}, { limit, page })
