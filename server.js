@@ -15,6 +15,8 @@ const NutritionRoute = require('./routes/Nutrition.routes')
 const CartRoute = require('./routes/Cart.routes')
 const AuthToken = require('./middleware/AuthToken');
 const CaloriesRoute = require('./routes/Calories.routes')
+require('dotenv').config();
+
 
 
 
@@ -22,14 +24,16 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger');
 const {swaggerDocs: V1SwaggerDocs} = require('./swagger')
 
-//Prueba
+
 
 const app = express()
 
 app.use(cors())
 
 mongoose.set('strictQuery', false);
-mongoose.connect('mongodb+srv://carlos:Monopolis19@dbcluster.khexvht.mongodb.net/FodMet123?retryWrites=true&w=majority',{useNewUrlParser:true, useUnifiedTopology:true})
+mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
+console.log(process.env.MONGO_URI); // Imprime la cadena de conexión en la consola
+
 
 const db=mongoose.connection
 
@@ -60,7 +64,7 @@ app.use('/uploads', express.static('uploads'))
 
 
 app.listen(PORT,()=>{
-    console.log(`server is running on port http://localhost:${PORT}`)
+    console.log(`server is running on port http://localhost:${PORT}/api/product`)
     V1SwaggerDocs(app, PORT)
 })
 
